@@ -1,12 +1,7 @@
 import { ThemeContext } from "@react-navigation/native";
 import { useContext } from "react";
-import {
-  ColorSchemeName,
-  FlatList,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { ColorSchemeName, FlatList, StyleSheet, View } from "react-native";
+import CustomDate from "./CustomDate";
 
 type DaysProps = {
   firstWeekDayOfMonth: number;
@@ -14,7 +9,8 @@ type DaysProps = {
 };
 
 const Days = ({ firstWeekDayOfMonth, lastDayOfMonth }: DaysProps) => {
-  const totalCells = firstWeekDayOfMonth + lastDayOfMonth;
+  let totalCells = firstWeekDayOfMonth + lastDayOfMonth;
+  totalCells += 7 - (totalCells % 7);
   const cellsArr = Array.from({ length: totalCells }).fill(null);
   const theme = useContext(ThemeContext);
   if (!theme)
@@ -27,11 +23,20 @@ const Days = ({ firstWeekDayOfMonth, lastDayOfMonth }: DaysProps) => {
       <FlatList
         data={cellsArr}
         renderItem={({ item, index }) => {
-          if (index < firstWeekDayOfMonth) return <Text>{""}</Text>;
           const dayNumber = index - firstWeekDayOfMonth + 1;
-          return <Text>{dayNumber}</Text>;
+          return (
+            <View style={{ flex: 1, alignItems: "center" }}>
+              {index < firstWeekDayOfMonth ||
+              index > firstWeekDayOfMonth + lastDayOfMonth - 1 ? (
+                <CustomDate />
+              ) : (
+                <CustomDate dayNumber={dayNumber} />
+              )}
+            </View>
+          );
         }}
         numColumns={7}
+        contentContainerStyle={styles.daysInnerContainer}
       ></FlatList>
     </View>
   );
@@ -43,6 +48,9 @@ function createStyles(theme: ColorSchemeName) {
       padding: 2,
       marginTop: 5,
       width: "80%",
+    },
+    daysInnerContainer: {
+      justifyContent: "space-evenly",
     },
   });
 }

@@ -2,8 +2,8 @@ import { View } from "react-native";
 import DayHeader from "./DayHeader";
 import Days from "./Days";
 
-const Month = ({ date }: { date: any }) => {
-  const d = new Date(date);
+const Month = ({ date }: { date: Date }) => {
+  const d = new Date(date.getFullYear(), date.getMonth(), 1);
   const startWeekDayOfMonth = d.getDay();
   const lastDayOfMonth = new Date(
     d.getFullYear(),

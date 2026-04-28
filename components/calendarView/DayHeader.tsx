@@ -85,7 +85,7 @@ function createStyle(theme: ColorSchemeName) {
     },
     days: {
       flex: 1,
-      justifyContent: "space-between",
+      justifyContent: "space-evenly",
     },
     daysText: {
       padding: 10,
