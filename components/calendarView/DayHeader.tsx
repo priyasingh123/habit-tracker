@@ -1,11 +1,11 @@
 import { ThemeContext } from "@react-navigation/native";
 import { useContext, type Dispatch, type SetStateAction } from "react";
 import {
-    ColorSchemeName,
-    Pressable,
-    StyleSheet,
-    Text,
-    View,
+  ColorSchemeName,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
 } from "react-native";
 import Animated from "react-native-reanimated";
 
@@ -35,7 +35,7 @@ const DayHeader = ({
     );
   const styles = createStyle(theme.dark === true ? "dark" : "light");
   return (
-    <View style={{ display: "flex", alignItems: "center" }}>
+    <View style={styles.dayHeaderContainer}>
       <Pressable
         style={styles.monthBanner}
         onPress={() =>
@@ -61,6 +61,10 @@ const DayHeader = ({
 
 function createStyle(theme: ColorSchemeName) {
   return StyleSheet.create({
+    dayHeaderContainer: {
+      width: "100%",
+      alignItems: "center",
+    },
     monthBanner: {
       padding: 10,
       backgroundColor: theme === "dark" ? "#eee" : "#333",

@@ -1,4 +1,4 @@
-import DayHeader from "@/components/calendarView/DayHeader";
+import Month from "@/components/calendarView/Month";
 import { Platform, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -6,12 +6,7 @@ const Index = () => {
   const Container = Platform.OS === "web" ? ScrollView : SafeAreaView;
   return (
     <Container>
-      <DayHeader
-        date={new Date()}
-        setOpenDrawer={() => {}}
-        setDrawerBody={() => {}}
-        setMonthYear={() => {}}
-      />
+      <Month date={new Date()} />
     </Container>
   );
 };
