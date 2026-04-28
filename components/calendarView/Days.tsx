@@ -36,6 +36,7 @@ const Days = ({ firstWeekDayOfMonth, lastDayOfMonth }: DaysProps) => {
           );
         }}
         numColumns={7}
+        keyExtractor={(list, index) => `${index}${list}`}
         contentContainerStyle={styles.daysInnerContainer}
       ></FlatList>
     </View>

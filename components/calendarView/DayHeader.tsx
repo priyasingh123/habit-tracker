@@ -48,11 +48,14 @@ const DayHeader = ({
       </Pressable>
       <View style={styles.monthDays}>
         <Animated.FlatList
-          contentContainerStyle={styles.days}
           data={weekdays}
-          horizontal={true}
-          renderItem={({ item }) => <Text style={styles.daysText}>{item}</Text>}
+          renderItem={({ item }) => (
+            <View style={styles.dayItem}>
+              <Text style={styles.daysText}>{item}</Text>
+            </View>
+          )}
           keyExtractor={(list, index) => `${index}${list}`}
+          numColumns={7}
         ></Animated.FlatList>
       </View>
     </View>
@@ -83,11 +86,12 @@ function createStyle(theme: ColorSchemeName) {
       marginTop: 5,
       width: "80%",
     },
-    days: {
+    dayItem: {
       flex: 1,
-      justifyContent: "space-evenly",
+      alignItems: "center",
     },
     daysText: {
+      flex: 1,
       padding: 10,
       fontSize: 20,
     },
