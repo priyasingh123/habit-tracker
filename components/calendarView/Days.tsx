@@ -49,6 +49,7 @@ function createStyles(theme: ColorSchemeName) {
       padding: 2,
       marginTop: 5,
       width: "80%",
+      alignSelf: "center",
     },
     daysInnerContainer: {
       justifyContent: "space-evenly",
