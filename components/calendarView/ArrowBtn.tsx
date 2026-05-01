@@ -46,7 +46,7 @@ function createStyles(theme: ColorSchemeName) {
       height: lineLength * 2,
       justifyContent: "center",
       alignItems: "center",
-      margin: "2%",
+      margin: "1%",
     },
 
     line: {
