@@ -11,9 +11,9 @@ const Calendar = () => {
         justifyContent: "center",
       }}
     >
-      <ArrowBtn direction="right" />
-      <Month date={new Date()} />
       <ArrowBtn direction="left" />
+      <Month date={new Date()} />
+      <ArrowBtn direction="right" />
     </View>
   );
 };

@@ -20,14 +20,14 @@ const ArrowBtn = ({ direction }: ArrowBtnProps) => {
         <View
           style={[
             styles.line,
-            direction === "left" ? styles.topLeft : styles.topRight,
+            direction === "right" ? styles.topLeft : styles.topRight,
           ]}
         />
         {/* bottom line of arrow */}
         <View
           style={[
             styles.line,
-            direction === "left" ? styles.bottomLeft : styles.bottomRight,
+            direction === "right" ? styles.bottomLeft : styles.bottomRight,
           ]}
         />
       </View>
