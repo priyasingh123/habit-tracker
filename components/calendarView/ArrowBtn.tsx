@@ -10,6 +10,7 @@ import {
 type ArrowBtnProps = {
   direction: "left" | "right";
   onPress: () => void;
+  date: Date;
 };
 
 const ArrowBtn = ({ direction, onPress }: ArrowBtnProps) => {

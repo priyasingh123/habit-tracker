@@ -35,9 +35,9 @@ const Calendar = () => {
   return (
     <View {...swipeResponder.panHandlers}>
       <View style={styles.header}>
-        <ArrowBtn direction="left" onPress={handlePrev} />
+        <ArrowBtn direction="left" onPress={handlePrev} date={currentDate} />
         <Month date={currentDate} />
-        <ArrowBtn direction="right" onPress={handleNext} />
+        <ArrowBtn direction="right" onPress={handleNext} date={currentDate} />
       </View>
     </View>
   );

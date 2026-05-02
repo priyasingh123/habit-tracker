@@ -21,6 +21,7 @@ const Month = ({ date }: { date: Date }) => {
       <Days
         firstWeekDayOfMonth={startWeekDayOfMonth}
         lastDayOfMonth={lastDayOfMonth}
+        dayOfMonth={date}
       />
     </View>
   );

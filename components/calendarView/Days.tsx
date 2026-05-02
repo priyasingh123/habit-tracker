@@ -6,9 +6,14 @@ import CustomDate from "./CustomDate";
 type DaysProps = {
   firstWeekDayOfMonth: number;
   lastDayOfMonth: number;
+  dayOfMonth: Date;
 };
 
-const Days = ({ firstWeekDayOfMonth, lastDayOfMonth }: DaysProps) => {
+const Days = ({
+  firstWeekDayOfMonth,
+  lastDayOfMonth,
+  dayOfMonth,
+}: DaysProps) => {
   let totalCells = firstWeekDayOfMonth + lastDayOfMonth;
   totalCells += 7 - (totalCells % 7);
   const cellsArr = Array.from({ length: totalCells }).fill(null);
@@ -30,7 +35,7 @@ const Days = ({ firstWeekDayOfMonth, lastDayOfMonth }: DaysProps) => {
               index > firstWeekDayOfMonth + lastDayOfMonth - 1 ? (
                 <CustomDate />
               ) : (
-                <CustomDate dayNumber={dayNumber} />
+                <CustomDate dayNumber={dayNumber} dayOfMonth={dayOfMonth} />
               )}
             </View>
           );
