@@ -1,12 +1,18 @@
 import { ThemeContext } from "@react-navigation/native";
 import { useContext } from "react";
-import { ColorSchemeName, StyleSheet, View } from "react-native";
+import {
+  ColorSchemeName,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 type ArrowBtnProps = {
   direction: "left" | "right";
+  onPress: () => void;
 };
 
-const ArrowBtn = ({ direction }: ArrowBtnProps) => {
+const ArrowBtn = ({ direction, onPress }: ArrowBtnProps) => {
   const theme = useContext(ThemeContext);
   if (!theme)
     throw new Error(
@@ -14,7 +20,7 @@ const ArrowBtn = ({ direction }: ArrowBtnProps) => {
     );
   const styles = createStyles(theme.dark ? "dark" : "light");
   return (
-    <>
+    <TouchableOpacity onPress={onPress}>
       <View style={styles.container}>
         {/* top line of arrow — rotates differently for left/right */}
         <View
@@ -31,7 +37,7 @@ const ArrowBtn = ({ direction }: ArrowBtnProps) => {
           ]}
         />
       </View>
-    </>
+    </TouchableOpacity>
   );
 };
 export default ArrowBtn;

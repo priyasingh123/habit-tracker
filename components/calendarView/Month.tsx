@@ -13,7 +13,7 @@ const Month = ({ date }: { date: Date }) => {
   return (
     <View style={{ flex: 1 }}>
       <DayHeader
-        date={new Date()}
+        date={date}
         setOpenDrawer={() => {}}
         setDrawerBody={() => {}}
         setMonthYear={() => {}}

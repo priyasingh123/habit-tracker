@@ -72,7 +72,7 @@ function createStyle(theme: ColorSchemeName) {
       padding: 10,
       backgroundColor: theme === "dark" ? "#eee" : "#333",
       borderRadius: 7,
-      maxWidth: 200,
+      width: 200,
     },
     monthLabel: {
       color: theme === "dark" ? "#333" : "#eee",
