@@ -1,5 +1,4 @@
-import { ThemeContext } from "@react-navigation/native";
-import { useContext } from "react";
+import { useTheme } from "@react-navigation/native";
 import {
   ColorSchemeName,
   StyleSheet,
@@ -14,11 +13,7 @@ type ArrowBtnProps = {
 };
 
 const ArrowBtn = ({ direction, onPress }: ArrowBtnProps) => {
-  const theme = useContext(ThemeContext);
-  if (!theme)
-    throw new Error(
-      "ThemeContext is undefined. Make sure you are using a ThemeProvider.",
-    );
+  const theme = useTheme();
   const styles = createStyles(theme.dark ? "dark" : "light");
   return (
     <TouchableOpacity onPress={onPress}>

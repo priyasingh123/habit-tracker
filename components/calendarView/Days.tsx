@@ -1,5 +1,4 @@
-import { ThemeContext } from "@react-navigation/native";
-import { useContext } from "react";
+import { useTheme } from "@react-navigation/native";
 import { ColorSchemeName, FlatList, StyleSheet, View } from "react-native";
 import CustomDate from "./CustomDate";
 
@@ -17,11 +16,8 @@ const Days = ({
   let totalCells = firstWeekDayOfMonth + lastDayOfMonth;
   totalCells += 7 - (totalCells % 7);
   const cellsArr = Array.from({ length: totalCells }).fill(null);
-  const theme = useContext(ThemeContext);
-  if (!theme)
-    throw new Error(
-      "ThemeContext is undefined. Make sure you are using a ThemeProvider.",
-    );
+  const theme = useTheme();
+
   const styles = createStyles(theme.dark === true ? "dark" : "light");
   return (
     <View style={styles.daysContainer}>

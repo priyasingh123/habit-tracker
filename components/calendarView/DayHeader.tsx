@@ -1,5 +1,5 @@
-import { ThemeContext } from "@react-navigation/native";
-import { useContext, type Dispatch, type SetStateAction } from "react";
+import { useTheme } from "@react-navigation/native";
+import { type Dispatch, type SetStateAction } from "react";
 import {
   ColorSchemeName,
   Pressable,
@@ -22,17 +22,13 @@ const DayHeader = ({
   setDrawerBody,
   setMonthYear,
 }: DayHeaderProps) => {
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
   const weekdays = ["S", "M", "T", "W", "T", "F", "S"];
   const handleMonthClick = async (year: number, month: number) => {
     setDrawerBody("monthlyStats");
     setOpenDrawer(true);
     setMonthYear({ month, year });
   };
-  if (!theme)
-    throw new Error(
-      "ThemeContext is undefined. Make sure you are using a ThemeProvider.",
-    );
   const styles = createStyle(theme.dark === true ? "dark" : "light");
   return (
     <View style={styles.dayHeaderContainer}>

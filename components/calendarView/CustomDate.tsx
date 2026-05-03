@@ -1,5 +1,4 @@
-import { ThemeContext } from "@react-navigation/native";
-import { useContext } from "react";
+import { useTheme } from "@react-navigation/native";
 import { ColorSchemeName, Pressable, StyleSheet, Text } from "react-native";
 
 const CustomDate = ({
@@ -9,11 +8,8 @@ const CustomDate = ({
   dayNumber?: number;
   dayOfMonth?: Date;
 }) => {
-  const theme = useContext(ThemeContext);
-  if (!theme)
-    throw new Error(
-      "ThemeContext is undefined. Make sure you are using a ThemeProvider.",
-    );
+  const theme = useTheme();
+
   const styles = createStyles(theme.dark === true ? "dark" : "light");
   const isSameMonthYear = () => {
     const today = new Date();
@@ -75,7 +71,7 @@ function createStyles(theme: ColorSchemeName) {
     },
     todayText: {
       fontSize: 20,
-      backgroundColor: theme === "dark" ? "#ddd" : "#333",
+      color: theme === "dark" ? "#333" : "#ddd",
     },
   });
 }
