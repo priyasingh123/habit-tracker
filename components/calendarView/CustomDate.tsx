@@ -1,12 +1,15 @@
 import { useTheme } from "@react-navigation/native";
+import type { Dispatch, SetStateAction } from "react";
 import { ColorSchemeName, Pressable, StyleSheet, Text } from "react-native";
 
 const CustomDate = ({
   dayNumber,
   dayOfMonth,
+  setVisible,
 }: {
   dayNumber?: number;
   dayOfMonth?: Date;
+  setVisible: Dispatch<SetStateAction<boolean>>;
 }) => {
   const theme = useTheme();
 
@@ -31,6 +34,8 @@ const CustomDate = ({
 
   return (
     <Pressable
+      disabled={!dayNumber}
+      onPress={() => setVisible(true)}
       style={({ pressed }) => [
         styles.dateBtn,
         pressed && styles.dateBtnPressed,

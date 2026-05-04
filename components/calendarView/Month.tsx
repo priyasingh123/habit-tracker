@@ -1,8 +1,14 @@
+import type { Dispatch, SetStateAction } from "react";
 import { View } from "react-native";
 import DayHeader from "./DayHeader";
 import Days from "./Days";
 
-const Month = ({ date }: { date: Date }) => {
+type MonthProps = {
+  date: Date;
+  setVisible: Dispatch<SetStateAction<boolean>>;
+};
+
+const Month = ({ date, setVisible }: MonthProps) => {
   const d = new Date(date.getFullYear(), date.getMonth(), 1);
   const startWeekDayOfMonth = d.getDay();
   const lastDayOfMonth = new Date(
@@ -22,6 +28,7 @@ const Month = ({ date }: { date: Date }) => {
         firstWeekDayOfMonth={startWeekDayOfMonth}
         lastDayOfMonth={lastDayOfMonth}
         dayOfMonth={date}
+        setVisible={setVisible}
       />
     </View>
   );

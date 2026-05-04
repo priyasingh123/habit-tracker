@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { PanResponder, StyleSheet, View } from "react-native";
+import HabitDrawer from "../habitView/HabitDrawer";
 import ArrowBtn from "./ArrowBtn";
 import Month from "./Month";
 
@@ -7,6 +8,7 @@ const SWIPE_THRESHOLD = 50;
 
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [visible, setVisible] = useState(false);
 
   const handlePrev = () => {
     setCurrentDate(
@@ -36,9 +38,12 @@ const Calendar = () => {
     <View {...swipeResponder.panHandlers}>
       <View style={styles.header}>
         <ArrowBtn direction="left" onPress={handlePrev} date={currentDate} />
-        <Month date={currentDate} />
+        <Month date={currentDate} setVisible={setVisible} />
         <ArrowBtn direction="right" onPress={handleNext} date={currentDate} />
       </View>
+      <HabitDrawer visible={visible} onClose={() => setVisible(false)}>
+        <span>HabitList</span>
+      </HabitDrawer>
     </View>
   );
 };
