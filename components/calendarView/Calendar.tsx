@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { PanResponder, StyleSheet, View } from "react-native";
+import { PanResponder, StyleSheet, Text, View } from "react-native";
 import HabitDrawer from "../habitView/HabitDrawer";
 import ArrowBtn from "./ArrowBtn";
 import Month from "./Month";
@@ -42,7 +42,9 @@ const Calendar = () => {
         <ArrowBtn direction="right" onPress={handleNext} date={currentDate} />
       </View>
       <HabitDrawer visible={visible} onClose={() => setVisible(false)}>
-        <span>HabitList</span>
+        <View>
+          <Text>HabitList</Text>
+        </View>
       </HabitDrawer>
     </View>
   );

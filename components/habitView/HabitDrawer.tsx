@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Animated,
   Dimensions,
@@ -18,11 +18,13 @@ type Props = {
 };
 
 export default function BottomDrawer({ visible, onClose, children }: Props) {
+  const [modalVisible, setModalVisible] = useState(false);
   const slideAnim = useRef(new Animated.Value(DRAWER_HEIGHT)).current;
 
   useEffect(() => {
     if (visible) {
       // slide up
+      setModalVisible(true);
       Animated.spring(slideAnim, {
         toValue: 0,
         useNativeDriver: true,
@@ -34,13 +36,16 @@ export default function BottomDrawer({ visible, onClose, children }: Props) {
         toValue: DRAWER_HEIGHT,
         duration: 250,
         useNativeDriver: true,
-      }).start();
+      }).start(() => {
+        setModalVisible(false);
+        slideAnim.setValue(DRAWER_HEIGHT);
+      });
     }
   }, [visible, slideAnim]);
 
   return (
     <Modal
-      visible={visible}
+      visible={modalVisible}
       transparent
       animationType="none" // we handle animation ourselves
       onRequestClose={onClose}
