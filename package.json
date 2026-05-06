@@ -12,7 +12,27 @@
     "test": "jest"
   },
   "jest": {
-    "preset": "jest-expo"
+    "projects": [
+      {
+        "displayName": "node",
+        "preset": "jest-expo/node",
+        "transform": {
+          "^.+\\.tsx?$": "babel-jest"
+        },
+        "testMatch": [
+          "**/api/**/*.test.ts"
+        ]
+      },
+      {
+        "displayName": "native",
+        "preset": "jest-expo",
+        "testMatch": [
+          "**/components/**/*.test.tsx",
+          "**/app/**/*.test.tsx",
+          "**/hooks/**/*.test.ts"
+        ]
+      }
+    ]
   },
   "dependencies": {
     "@expo/ngrok": "4.1.0",
