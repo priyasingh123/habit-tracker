@@ -10,13 +10,14 @@ export const restApi = async (endpoint: string, options: RequestInit = {}) => {
       ...options,
     });
     if (!res.ok) {
-      const errorData = await res.json().catch(() => null);
+      const errorData = await res.json();
       const message =
         errorData?.message ||
         errorData?.error ||
         `Request failed with status ${res.status}`;
       throw new Error(message);
     }
+    return res.json();
   } catch (err) {
     if (err instanceof Error) {
       console.error("API request error:", err.message);
