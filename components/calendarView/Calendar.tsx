@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import { useHabitStore } from "@/store/useHabitStore";
+import { useEffect, useRef, useState } from "react";
 import { PanResponder, StyleSheet, Text, View } from "react-native";
 import HabitDrawer from "../habitView/HabitDrawer";
 import ArrowBtn from "./ArrowBtn";
@@ -9,6 +10,11 @@ const SWIPE_THRESHOLD = 50;
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [visible, setVisible] = useState(false);
+  const fetchHabits = useHabitStore((state) => state.fetchHabits);
+
+  useEffect(() => {
+    fetchHabits();
+  }, [fetchHabits]);
 
   const handlePrev = () => {
     setCurrentDate(
