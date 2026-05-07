@@ -77,7 +77,7 @@ function createStyle(theme: ColorSchemeName) {
       fontSize: 25,
     },
     monthDays: {
-      backgroundColor: "green",
+      backgroundColor: "rgb(21, 134, 96)",
       padding: 2,
       marginTop: 5,
       width: "80%",
@@ -88,6 +88,7 @@ function createStyle(theme: ColorSchemeName) {
     },
     daysText: {
       flex: 1,
+      color: "white",
       padding: 10,
       fontSize: 20,
     },
