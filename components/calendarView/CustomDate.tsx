@@ -1,3 +1,4 @@
+import { useDayRecordStore } from "@/store/useDayRecordStore";
 import { useTheme } from "@react-navigation/native";
 import type { Dispatch, SetStateAction } from "react";
 import { ColorSchemeName, Pressable, StyleSheet, Text } from "react-native";
@@ -12,6 +13,8 @@ const CustomDate = ({
   setVisible: Dispatch<SetStateAction<boolean>>;
 }) => {
   const theme = useTheme();
+
+  const setStoreDate = useDayRecordStore((state) => state.setStoreDate);
 
   const styles = createStyles(theme.dark === true ? "dark" : "light");
   const isSameMonthYear = () => {
@@ -32,10 +35,23 @@ const CustomDate = ({
     return false;
   };
 
+  const handleDateClick = () => {
+    if (dayOfMonth) {
+      setVisible(true);
+      setStoreDate(
+        new Date(
+          dayOfMonth?.getFullYear(),
+          dayOfMonth?.getMonth(),
+          dayNumber,
+        ).toLocaleDateString("en-CA"),
+      );
+    }
+  };
+
   return (
     <Pressable
       disabled={!dayNumber}
-      onPress={() => setVisible(true)}
+      onPress={() => handleDateClick()}
       style={({ pressed }) => [
         styles.dateBtn,
         pressed && styles.dateBtnPressed,
