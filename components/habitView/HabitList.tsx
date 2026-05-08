@@ -1,6 +1,7 @@
 import { useDayRecordStore } from "@/store/useDayRecordStore";
 import { useHabitStore } from "@/store/useHabitStore";
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
+import Habit from "./Habit";
 
 const HabitList = () => {
   const styles = createStyles();
@@ -20,8 +21,9 @@ const HabitList = () => {
       <FlatList
         data={habits}
         renderItem={({ item }) => {
-          return <Text>{item.title}</Text>;
+          return <Habit title={item.title} />;
         }}
+        // contentContainerStyle={styles.habit_list}
         keyExtractor={(habit) => habit._id}
       ></FlatList>
       <Pressable>
@@ -35,11 +37,15 @@ function createStyles() {
   return StyleSheet.create({
     habit_list_wrapper: {
       alignItems: "center",
+      flex: 1,
     },
     date_text: {
       color: "white",
       fontSize: 30,
       fontWeight: "700",
+    },
+    habit_list: {
+      flex: 1,
     },
   });
 }
