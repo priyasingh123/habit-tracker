@@ -36,13 +36,13 @@ const HabitList = () => {
 function createStyles() {
   return StyleSheet.create({
     habit_list_wrapper: {
-      alignItems: "center",
       flex: 1,
     },
     date_text: {
       color: "white",
       fontSize: 30,
       fontWeight: "700",
+      textAlign: "center",
     },
     habit_list: {
       flex: 1,
