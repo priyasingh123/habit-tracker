@@ -19,15 +19,14 @@ const HabitList = () => {
           : "-"}
       </Text>
       <FlatList
-        data={habits}
+        data={habits.filter((habit) => !habit.isArchived)}
         renderItem={({ item }) => {
           return <Habit title={item.title} />;
         }}
-        // contentContainerStyle={styles.habit_list}
         keyExtractor={(habit) => habit._id}
       ></FlatList>
-      <Pressable>
-        <Text>Save Changes</Text>
+      <Pressable style={styles.save_changes_btn}>
+        <Text style={styles.save_changes_text}>Save Changes</Text>
       </Pressable>
     </View>
   );
@@ -46,6 +45,18 @@ function createStyles() {
     },
     habit_list: {
       flex: 1,
+    },
+    save_changes_btn: {
+      alignSelf: "center",
+      backgroundColor: "rgb(11, 100, 80)",
+      paddingVertical: 6,
+      paddingHorizontal: 8,
+      borderRadius: 4,
+      marginTop: 8,
+    },
+    save_changes_text: {
+      fontSize: 20,
+      color: "white",
     },
   });
 }
